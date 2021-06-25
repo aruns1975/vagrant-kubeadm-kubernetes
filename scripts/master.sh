@@ -73,6 +73,25 @@ subjects:
   namespace: kubernetes-dashboard
 EOF
 
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: kubernetes-dashboard
+  name: kubernetes-dashboard-service-np
+  labels:
+    k8s-app: kubernetes-dashboard
+spec:
+  type: NodePort
+  ports:
+  - port: 8443
+    nodePort: 30002
+    targetPort: 8443
+    protocol: TCP
+  selector:
+    k8s-app: kubernetes-dashboard
+EOF
+
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" >> /vagrant/configs/token
 
 sudo -i -u vagrant bash << EOF

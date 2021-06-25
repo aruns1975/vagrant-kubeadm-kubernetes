@@ -6,13 +6,14 @@ Vagrant.configure("2") do |config|
         echo "10.0.0.12  worker-node02" >> /etc/hosts
     SHELL
     
-    config.vm.define "master" do |master|
-      master.vm.box = "bento/ubuntu-18.04"
+    config.vm.define "master-node" do |master|
+      master.vm.box = "ubuntu/focal64"
       master.vm.hostname = "master-node"
       master.vm.network "private_network", ip: "10.0.0.10"
       master.vm.provider "virtualbox" do |vb|
           vb.memory = 4048
           vb.cpus = 2
+		  vb.name="master-node"
       end
       master.vm.provision "shell", path: "scripts/common.sh"
       master.vm.provision "shell", path: "scripts/master.sh"
@@ -20,13 +21,14 @@ Vagrant.configure("2") do |config|
 
     (1..2).each do |i|
   
-    config.vm.define "node0#{i}" do |node|
-      node.vm.box = "bento/ubuntu-18.04"
+    config.vm.define "worker-node0#{i}" do |node|
+      node.vm.box = "ubuntu/focal64"
       node.vm.hostname = "worker-node0#{i}"
       node.vm.network "private_network", ip: "10.0.0.1#{i}"
       node.vm.provider "virtualbox" do |vb|
           vb.memory = 2048
           vb.cpus = 1
+		  vb.name="worker-node0#{i}"
       end
       node.vm.provision "shell", path: "scripts/common.sh"
       node.vm.provision "shell", path: "scripts/node.sh"
