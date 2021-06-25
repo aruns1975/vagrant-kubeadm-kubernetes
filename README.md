@@ -3,17 +3,17 @@
 
 ### The Vagrant file and the scripts are forked from https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git. I thank the team for the setup and found that this is best and easy setup
 
-## Documentation
+>## Documentation
 
 Refer this link for documentation: https://devopscube.com/kubernetes-cluster-vagrant/
 
 
-## Prerequisites
+>## Prerequisites
 
 1. Working Vagrant setup
 2. 8 Gig + RAM workstation as the Vms use 3 vCPUS and 4+ GB RAM
  
-## Usage/Examples
+>## Usage/Examples
 
 To provision the cluster, execute the following commands.
 
@@ -23,7 +23,7 @@ cd vagrant-kubeadm-kubernetes
 vagrant up
 ```
 
-## Set Kubeconfig file varaible.
+>## Set Kubeconfig file varaible.
 
 ```shell
 cd vagrant-kubeadm-kubernetes
@@ -37,13 +37,13 @@ or you can copy the config file to .kube directory.
 cp config ~/.kube/
 ```
 
-## Kubernetes Dashboard URL
+>## Kubernetes Dashboard URL
 
 ```shell
 https://10.0.0.10:30002/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
 ```
 
-## Kubernetes login token
+>## Kubernetes login token
 
 Vagrant up will create the admin user token and saves in the configs directory.
 
@@ -53,19 +53,19 @@ cd configs
 cat token
 ```
 
-## To shutdown the cluster, 
+>## To shutdown the cluster, 
 
 ```shell
 vagrant halt
 ```
 
-## To restart the cluster,
+>## To restart the cluster,
 
 ```shell
 vagrant up
 ```
 
-## To destroy the cluster, 
+>## To destroy the cluster, 
 
 ```shell
 vagrant destroy -f
