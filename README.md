@@ -1,11 +1,12 @@
 
-# Vagrantfile and Scripts to Automate Kubernetes Setup using Kubeadm [Practice Environemnt for CKA/CKAD and CKS Exams]
+# Vagrantfile and Scripts to Automate Kubernetes Setup using Kubeadm
+
+### The Vagrant file and the scripts are forked from https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git. I thank the team for the setup and found that this is best and easy setup
 
 ## Documentation
 
 Refer this link for documentation: https://devopscube.com/kubernetes-cluster-vagrant/
 
-If you are preparing for CKA, CKAD or CKS exam, save $45 using code **DCUBEOFFER** at https://kube.promo/latest
 
 ## Prerequisites
 
@@ -17,7 +18,7 @@ If you are preparing for CKA, CKAD or CKS exam, save $45 using code **DCUBEOFFER
 To provision the cluster, execute the following commands.
 
 ```shell
-git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git
+git clone https://github.com/aruns1975/vagrant-kubeadm-kubernetes.git
 cd vagrant-kubeadm-kubernetes
 vagrant up
 ```
@@ -39,7 +40,7 @@ cp config ~/.kube/
 ## Kubernetes Dashboard URL
 
 ```shell
-http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
+https://10.0.0.10:30002/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
 ```
 
 ## Kubernetes login token
@@ -70,7 +71,4 @@ vagrant up
 vagrant destroy -f
 ```
 
-## Centos & HA based Setup
-
-If you want Centos based setup, please refer https://github.com/marthanda93/VAAS
   
